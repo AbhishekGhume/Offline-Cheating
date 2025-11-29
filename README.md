@@ -14,6 +14,7 @@ The tool listens for keyboard shortcuts, picks up copied text from your clipboar
 - Hotkey-based trigger system
 - Clipboard-based automation
 - Generates Java code automatically
+- Can run completely in the **background**
 - No cloud usage — full privacy
 - Easy setup on Windows
 
@@ -66,7 +67,7 @@ ollama --version
 ollama pull codellama:7b
 ```
 
-Test if it works:
+Test the model:
 
 ```bash
 ollama run codellama:7b "Write Java code to print Hello World"
@@ -82,11 +83,31 @@ pip install keyboard pyperclip requests
 
 ---
 
-### 4. Run the Project
+### 4. Run Normally
 
 ```bash
 python offline_cheating.py
 ```
+
+---
+
+## 🖥️ Run in Background (No Console Window)
+
+### Start in background:
+
+PowerShell command:
+
+```powershell
+Start-Process "pythonw.exe" -ArgumentList "offline_cheating.py" -WindowStyle Hidden
+```
+
+### Stop background process:
+
+```powershell
+Stop-Process -Name "pythonw" -Force
+```
+
+> You must run this command from the directory where `offline_cheating.py` exists.
 
 ---
 
@@ -110,7 +131,7 @@ README.md               Project documentation
 
 ## 🧪 Test API Connection (Optional)
 
-To verify that Python can talk to Ollama, run:
+Verify Python → Ollama communication:
 
 ```bash
 py -3.11 -c "import requests; print(requests.post('http://localhost:11434/api/generate', json={'model':'codellama:7b','prompt':'Write a Java program','stream':False}).json()['response'])"
@@ -122,16 +143,16 @@ py -3.11 -c "import requests; print(requests.post('http://localhost:11434/api/ge
 
 - 100% Offline
 - No internet usage
-- No logging
+- No telemetry
 - No tracking
-- No API keys
+- No API tokens
 
 ---
 
 ## ⚠️ Disclaimer
 
-This project is for **educational and experimentation purposes only**.  
-Do not use it for academic dishonesty or violating platform rules or policies.
+This project is intended for **educational and experimental use only**.  
+Do not use this tool for academic dishonesty or violating institutional rules.
 
 ---
 
